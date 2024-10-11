@@ -23,6 +23,9 @@ import { Post } from './posts/entities/post.entity';
         database: configService.get<string>('DATABASE_NAME'),
         entities: [Post],
         synchronize: true,
+        ssl: {
+          rejectUnauthorized: false,
+        }
       }),
     }),
     PostsModule,
