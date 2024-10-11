@@ -4,6 +4,9 @@ import { PostsModule } from './posts/posts.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { Post } from './posts/entities/post.entity';
+import { DatabaseModule } from './database/database.module';
+import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
 
 @Module({
   imports: [
@@ -21,7 +24,7 @@ import { Post } from './posts/entities/post.entity';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post],
+        entities: [Post, User],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
@@ -29,6 +32,8 @@ import { Post } from './posts/entities/post.entity';
       }),
     }),
     PostsModule,
+    DatabaseModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
