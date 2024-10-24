@@ -1,29 +1,32 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, ManyToOne } from "typeorm";
 import { Service } from '../../service/entities/service.entity';
-
-
 
 @Entity("submission")
 export class Submission {
     @PrimaryColumn()
-    submission_id: String;
+    id: string;
 
     @Column()
-    student_id: String;
+    purpose: string;
 
     @Column()
-    submission_type: String;
+    documentPath: string;
 
     @Column()
-    status: String;
+    created_at: Date;
 
     @Column()
-    date_submitted: Date;
+    updated_at: Date;
+
+    @Column({ nullable: true })
+    date_completed: Date;
 
     @Column()
-    last_modified: Date;
+    status: string;
 
-    @OneToMany(() => Service, service => service.submission_id)  // Quan hệ 1-n với service
-    services: Service[];
+    // @Column()
+    // student_id: string; //foreign key
+
+    @ManyToOne(() => Service, service => service.id)
+    service: Service; // foreign key là id của service
 }
-

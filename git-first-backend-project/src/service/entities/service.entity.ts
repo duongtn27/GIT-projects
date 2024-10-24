@@ -1,33 +1,18 @@
-import { Column, Entity, PrimaryColumn, ManyToOne } from "typeorm";
-import { Submission } from '../../submission/entities/submission.entity';
+import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+// import { Submission } from '../../submission/entities/submission.entity';
 
 @Entity("service")
 export class Service {
     @PrimaryColumn()
-    service_id: String;
+    id: string;
 
     @Column()
-    service_name: String;
+    name: string;
 
     @Column()
-    description: String;
+    handler: string;
 
-    @ManyToOne(() => Submission, submission => submission.services)
-    @Column() 
-    submission_id: String;  // Foreign Key
-
-    @ManyToOne(() => Submission, submission => submission.services)  // Quan hệ n-1 với submission
-    submission: Submission;
-
-    @Column()
-    status: String;
-
-    @Column()
-    date_requested: Date;
-
-    @Column({ nullable: true })
-    date_completed: Date;
-
-    @Column()
-    handler: String;
+// em nghĩ service không cần link tới submission nữa
+    // @OneToMany(() => Submission, submission => submission.service)
+    // submissions: Submission[]; // thêm mối quan hệ OneToMany với Submission
 }
