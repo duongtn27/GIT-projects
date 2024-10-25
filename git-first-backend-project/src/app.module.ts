@@ -7,6 +7,11 @@ import { Post } from './posts/entities/post.entity';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
+  
+import { HistoriesModule } from './histories/histories.module';
+import { History } from './histories/entities/histories.entity';
+import { NotificationsModule } from './notifications/notifications.module';
+import { Notification } from './notifications/entities/notifications.entity';
 import { Submission } from './submission/entities/submission.entity';
 import { Service } from './service/entities/service.entity';
 import { ServiceModule } from './service/service.module';
@@ -28,7 +33,7 @@ import { SubmissionModule } from './submission/submission.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post, User, Submission, Service],
+        entities: [Post, User, Submission, Service, History, Notification],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
