@@ -1,14 +1,18 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PostsModule } from './posts/posts.module';
+// import { PostsModule } from './posts/posts.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
-import { Post } from './posts/entities/post.entity';
+// import { Posts } from './posts/entities/post.entity';
+import { MarkModule } from './mark/mark.module';
+import { CampusModule } from './campus/campus.module';
+import { Marks } from './mark/entities/mark.entity';
+import { Campus } from './campus/entities/campus.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
+      load: [configuration],  
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -21,14 +25,15 @@ import { Post } from './posts/entities/post.entity';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post],
+        entities: [Marks, Campus],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
         }
       }),
     }),
-    PostsModule,
+    MarkModule,
+    CampusModule,
   ],
   controllers: [],
   providers: [],
