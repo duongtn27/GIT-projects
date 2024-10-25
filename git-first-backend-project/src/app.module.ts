@@ -2,11 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
-import { Post } from './posts/entities/post.entity';
-import { NestGResourceRoomModule } from './nest-g-resource-room/nest-g-resource-room.module';
 import { PaymentModule } from './payment/payment.module';
 import { Payments } from './payment/entities/payment.entity';
-import { Rooms } from './nest-g-resource-room/entities/nest-g-resource-room.entity';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
@@ -22,11 +19,13 @@ import { Submission } from './submission/entities/submission.entity';
 import { Service } from './service/entities/service.entity';
 import { ServiceModule } from './service/service.module';
 import { SubmissionModule } from './submission/submission.module';
+import { RoomModule } from './room/room.module';
+import { Room } from './room/entities/room.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],  
+      load: [configuration],
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -39,7 +38,7 @@ import { SubmissionModule } from './submission/submission.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post, User, Submission, Service, History, Notification, Marks, Campus, Payments,  Rooms],
+        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
@@ -48,13 +47,14 @@ import { SubmissionModule } from './submission/submission.module';
     }),
     MarkModule,
     CampusModule,
-    PostsModule,
-    NestGResourceRoomModule,
     PaymentModule,
     DatabaseModule,
     UserModule,
     ServiceModule,
     SubmissionModule,
+    HistoriesModule,
+    NotificationsModule,
+    RoomModule
   ],
   controllers: [],
   providers: [],

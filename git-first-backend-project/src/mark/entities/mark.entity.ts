@@ -1,4 +1,3 @@
-// export class Mark {}
 import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 
 @Entity()
@@ -16,5 +15,5 @@ export class Marks {
     score: number;
 
     @Column()
-    exam_date: Timestamp;
+    exam_date: Date;
 }
