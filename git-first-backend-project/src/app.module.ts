@@ -3,6 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { Post } from './posts/entities/post.entity';
+import { NestGResourceRoomModule } from './nest-g-resource-room/nest-g-resource-room.module';
+import { PaymentModule } from './payment/payment.module';
+import { Payments } from './payment/entities/payment.entity';
+import { Rooms } from './nest-g-resource-room/entities/nest-g-resource-room.entity';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
@@ -35,7 +39,7 @@ import { SubmissionModule } from './submission/submission.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post, User, Submission, Service, History, Notification, Marks, Campus],
+        entities: [Post, User, Submission, Service, History, Notification, Marks, Campus, Payments,  Rooms],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
@@ -45,6 +49,8 @@ import { SubmissionModule } from './submission/submission.module';
     MarkModule,
     CampusModule,
     PostsModule,
+    NestGResourceRoomModule,
+    PaymentModule,
     DatabaseModule,
     UserModule,
     ServiceModule,
