@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { PostsModule } from './posts/posts.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
 import { Post } from './posts/entities/post.entity';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
-  
+import { MarkModule } from './mark/mark.module';
+import { CampusModule } from './campus/campus.module';
+import { Marks } from './mark/entities/mark.entity';
+import { Campus } from './campus/entities/campus.entity';
 import { HistoriesModule } from './histories/histories.module';
 import { History } from './histories/entities/histories.entity';
 import { NotificationsModule } from './notifications/notifications.module';
@@ -20,7 +22,7 @@ import { SubmissionModule } from './submission/submission.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [configuration],
+      load: [configuration],  
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
@@ -33,13 +35,15 @@ import { SubmissionModule } from './submission/submission.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [Post, User, Submission, Service, History, Notification],
+        entities: [Post, User, Submission, Service, History, Notification, Marks, Campus],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
         },
       }),
     }),
+    MarkModule,
+    CampusModule,
     PostsModule,
     DatabaseModule,
     UserModule,
