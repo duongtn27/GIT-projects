@@ -20,7 +20,11 @@ export class NotificationsService {
         return this.notificationRepository.find();
     }
 
-    async findOne(id: number): Promise<Notification> {
-        return this.notificationRepository.findOneBy({notificationId: id});
+    async findOne(id: string): Promise<Notification> {
+        return this.notificationRepository.findOneBy({ notificationId: id });
+    }
+
+    async remove(id: string) {
+        return this.notificationRepository.delete(id);
     }
 }
