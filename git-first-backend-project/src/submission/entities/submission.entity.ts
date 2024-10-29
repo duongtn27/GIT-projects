@@ -26,6 +26,7 @@ export class Submission {
 
     // @Column()
     // student_id: string; //foreign key
+    // lmao123
 
     @ManyToOne(() => Service, service => service.id)
     service: Service; // foreign key là id của service
