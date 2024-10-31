@@ -1,33 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// // import {Header, Footer} from '../components/header.tsx'
+// // import Footer from '../components/footer.tsx'
+// import S from '../components/header.tsx'
+import Header from '../components/header.tsx'
+import Footer from '../components/footer.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const name = "LMAO";
+  const catName = ["1","2","3"];
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <S.Header /> 
+      <S.Footer /> */}
+      <Header catname = {catName} />
+      <h1>Header HELLO {name} </h1>
+      <Footer />
+      <h1>Footer HELLO {name} </h1>
     </>
   )
 }
