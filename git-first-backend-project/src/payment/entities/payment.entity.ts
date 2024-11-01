@@ -1,5 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"; 
-
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn, ManyToOne } from "typeorm"; 
+import { User } from '../../user/entities/user.entity'
+import { Submissions } from '../../submission/entities/submission.entity'
 @Entity()
 export class Payments {
     @PrimaryGeneratedColumn()
@@ -23,5 +24,10 @@ export class Payments {
     @Column()
     status:  string;//pending, paid, failed
 
+    @OneToOne(() => User) 
+    user: User
 
+    @ManyToOne(() => Submissions, submission => submission.payment) 
+    submission: Submissions;
 }
+    
