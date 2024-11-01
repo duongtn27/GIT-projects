@@ -1,4 +1,8 @@
-import { Column, Entity, Generated, PrimaryColumn } from "typeorm";
+/////////// IMPORT TABLES FOR CREATING RELATIONS ///////////
+import { History } from '../../histories/entities/histories.entity';
+import { Notification } from '../../notifications/entities/notifications.entity';
+
+import { Column, Entity, Generated, ManyToMany, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity("user")
 export class User {
@@ -29,6 +33,13 @@ export class User {
 
     @Column()
     balance: Number
+
+    ////////// RELATIONS WITH OTHER TABLES /////////////
+    @OneToMany(() => History, history => history.user)
+    histories: History[]
+
+    @ManyToMany(() => Notification, notification => notification.users)
+    notifications: Notification[];
 }
 
 export enum Role {

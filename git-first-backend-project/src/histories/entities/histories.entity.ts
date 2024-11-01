@@ -3,8 +3,9 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
+    ManyToOne,
 } from 'typeorm';
-
+import { User } from '../../user/entities/user.entity';
 /**
  * Records past changes of objects
  */
@@ -26,8 +27,8 @@ export class History {
     changeDate: Date;
 
     // uuid of the person making the change
-    @Column()
-    changedByUserId: string;
+    @ManyToOne(() => User, user => user.histories)
+    user: User;
 
     // content of the old version
     @Column({ type: 'text' })
