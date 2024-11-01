@@ -8,11 +8,11 @@ export class Schedule {
     @Column()
     courses_id: String;
 
-    @Column()
-    course_name: String;
+    @Column({type: "timestamp"})
+    date: Date;
 
     @Column()
-    term: String;
+    slot: Number;
 
     @Column()
     group_id: String;
@@ -20,6 +20,12 @@ export class Schedule {
     @Column()
     lecture_id: String;
 
-    @Column("text", {array: true})
-    sessions: String[];
+    @Column()
+    session_number: Number;
+
+    @Column()
+    room_id: String;
+
+    @Column()
+    booker_id: String;
 }
