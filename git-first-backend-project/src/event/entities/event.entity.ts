@@ -29,6 +29,7 @@ export class Event {
 
     @Column("text")
     description: String;
+    
 
     @ManyToOne(() => Major, major => major.id, { nullable: true })
     @JoinColumn({ name: "major_id" })
