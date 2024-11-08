@@ -1,10 +1,11 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn, ManyToOne } from "typeorm"; 
+import { Column, Entity, OneToOne, Generated, PrimaryColumn, ManyToOne } from "typeorm"; 
 import { User } from '../../user/entities/user.entity'
-import { Submissions } from '../../submission/entities/submission.entity'
-@Entity()
+import { Submission } from '../../submission/entities/submission.entity'
+@Entity("payment")
 export class Payments {
-    @PrimaryGeneratedColumn()
-    id: string;
+    @PrimaryColumn({ type: 'uuid' })
+    @Generated('uuid')
+    id: String;
 
     @Column()
     user_id: number;//Foreign key
@@ -27,7 +28,7 @@ export class Payments {
     @OneToOne(() => User) 
     user: User
 
-    @ManyToOne(() => Submissions, submission => submission.payment) 
-    submission: Submissions;
+    @ManyToOne(() => Submission, submission => submission.payment) 
+    submission: Submission;
 }
     

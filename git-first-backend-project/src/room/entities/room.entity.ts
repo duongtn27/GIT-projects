@@ -1,10 +1,11 @@
-import { Column, Entity, IsNull, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Column, Entity, IsNull, Generated, PrimaryColumn, ManyToOne } from "typeorm";
 import { Campus } from '../../campus/entities/campus.entity'
 import { Schedules } from '../../schedule/entities/schedule.entity'
 @Entity("rooms")
 export class Room {
-    @PrimaryGeneratedColumn()
-    id: string;
+    @PrimaryColumn({ type: 'uuid' })
+    @Generated('uuid')
+    id: String;
 
     @Column()
     description: string;
