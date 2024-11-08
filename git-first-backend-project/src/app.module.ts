@@ -21,6 +21,15 @@ import { ServiceModule } from './service/service.module';
 import { SubmissionModule } from './submission/submission.module';
 import { RoomModule } from './room/room.module';
 import { Room } from './room/entities/room.entity';
+import { MajorModule } from './major/major.module';
+import { ScheduleModule } from './schedule/schedule.module';
+import { EventModule } from './event/event.module';
+import { ProgrammeModule } from './programme/programme.module';
+import { Major } from './major/entities/major.entity';
+import { Event } from './event/entities/event.entity';
+import { Programme } from './programme/entities/programme.entity';
+import { Schedule } from './schedule/entities/schedule.entity';
+
 
 @Module({
   imports: [
@@ -38,7 +47,7 @@ import { Room } from './room/entities/room.entity';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room],
+        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room, Major, Event, Programme, Schedule],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
@@ -54,7 +63,11 @@ import { Room } from './room/entities/room.entity';
     SubmissionModule,
     HistoriesModule,
     NotificationsModule,
-    RoomModule
+    RoomModule,
+    MajorModule,
+    ScheduleModule,
+    EventModule,
+    ProgrammeModule,
   ],
   controllers: [],
   providers: [],
