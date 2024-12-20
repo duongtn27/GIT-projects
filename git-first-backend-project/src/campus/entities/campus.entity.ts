@@ -17,4 +17,5 @@ export class Campus {
 
     @Column()
     director: string;
+    rooms: any;
 }

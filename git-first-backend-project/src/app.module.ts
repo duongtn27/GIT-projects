@@ -29,6 +29,8 @@ import { Major } from './major/entities/major.entity';
 import { Event } from './event/entities/event.entity';
 import { Programme } from './programme/entities/programme.entity';
 import { Schedule } from './schedule/entities/schedule.entity';
+import { AuthModule } from './auth/auth.module';
+import { PassportModule } from '@nestjs/passport';
 
 
 @Module({
@@ -54,6 +56,7 @@ import { Schedule } from './schedule/entities/schedule.entity';
         },
       }),
     }),
+    PassportModule.register({ session: true}),
     MarkModule,
     CampusModule,
     PaymentModule,
@@ -68,6 +71,7 @@ import { Schedule } from './schedule/entities/schedule.entity';
     ScheduleModule,
     EventModule,
     ProgrammeModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

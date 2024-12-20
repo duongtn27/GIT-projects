@@ -28,4 +28,5 @@ export class Schedule {
 
     @Column()
     booker_id: String;
+    rooms: any;
 }
