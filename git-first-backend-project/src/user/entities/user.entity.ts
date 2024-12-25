@@ -7,6 +7,12 @@ export class User {
     id: String;
 
     @Column()
+    fptId: String;
+
+    @Column()
+    UKId: String;
+
+    @Column()
     name: String
 
     @Column()

@@ -29,8 +29,10 @@ import { Major } from './major/entities/major.entity';
 import { Event } from './event/entities/event.entity';
 import { Programme } from './programme/entities/programme.entity';
 import { Schedule } from './schedule/entities/schedule.entity';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './oauth/auth.module';
 import { PassportModule } from '@nestjs/passport';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { JwtModule } from '@nestjs/jwt';
 
 
 @Module({
@@ -72,6 +74,7 @@ import { PassportModule } from '@nestjs/passport';
     EventModule,
     ProgrammeModule,
     AuthModule,
+    AuthenticationModule,
   ],
   controllers: [],
   providers: [],

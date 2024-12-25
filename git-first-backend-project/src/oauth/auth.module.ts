@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
-import { GoogleStrategy } from './utils/GoogleStrategy';
+import { GoogleStrategy } from './google/GoogleStrategy';
 import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../user/entities/user.entity';
-import { SessionSerializer } from './utils/Serializer';
+import { SessionSerializer } from './google/Serializer';
 
 @Module({
     imports: [TypeOrmModule.forFeature([User])],
