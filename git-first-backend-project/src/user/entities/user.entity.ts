@@ -1,6 +1,7 @@
-import { Column, Entity, Generated, PrimaryColumn } from "typeorm";
+import { Campus } from "src/campus/entities/campus.entity";
+import { Column, CreateDateColumn, Entity, Generated, JoinTable, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
-@Entity("user")
+@Entity("users")
 export class User {
     @PrimaryColumn({ type: 'uuid' })
     @Generated('uuid')
@@ -29,6 +30,19 @@ export class User {
 
     @Column()
     balance: Number
+
+    @Column()
+    avatar: String
+
+    @OneToOne(() => Campus)
+    @JoinTable()
+    campus: Campus
+
+    @CreateDateColumn()
+    createdAt: Date
+
+    @UpdateDateColumn()
+    updatedAt: Date
 }
 
 export enum Role {

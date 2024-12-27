@@ -1,8 +1,10 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Department } from "src/deparment/entities/department.entity";
+import { Column, CreateDateColumn, Entity, Generated, OneToMany, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity("programmes")
 export class Programme {
-    @PrimaryColumn()
+    @PrimaryColumn({type: "uuid"})
+    @Generated("uuid")
     id: String;
 
     @Column()
@@ -10,4 +12,13 @@ export class Programme {
 
     @Column()
     description: String;
+
+    @OneToMany(() => Department, (department) => department.programme)
+    departments: Department[]
+
+    @CreateDateColumn()
+    createdAt: Date
+
+    @UpdateDateColumn()
+    updatedAt: Date
 }
