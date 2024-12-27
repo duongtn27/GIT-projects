@@ -1,4 +1,3 @@
-import { Campus } from "src/campus/entities/campus.entity";
 import { Column, CreateDateColumn, Entity, Generated, JoinTable, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity("users")
@@ -33,10 +32,6 @@ export class User {
 
     @Column()
     avatar: String
-
-    @OneToOne(() => Campus)
-    @JoinTable()
-    campus: Campus
 
     @CreateDateColumn()
     createdAt: Date

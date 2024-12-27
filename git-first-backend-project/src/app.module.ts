@@ -48,7 +48,7 @@ import { AuthModule } from './auth/auth.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room, Department, Event, Programme, Schedule],
+        entities: [User, Submission, Service, Notification, Marks, Payments,],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
