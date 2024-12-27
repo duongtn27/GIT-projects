@@ -1,4 +1,4 @@
-import { Controller, Get, Req, UseGuards } from "@nestjs/common";
+import { Controller, Get, HttpStatus, Req, UseGuards } from "@nestjs/common";
 import { GoogleAuthGuard } from "./google/Guards";
 import { Request } from "express";
 
@@ -13,7 +13,7 @@ export class AuthController {
     @Get('google/redirect')
     @UseGuards(GoogleAuthGuard)
     handleRedirect() {
-        return { 'msg': 'OK' };
+        return { 'msg': 'Authorized' , "Status code": HttpStatus.ACCEPTED};
     }
 
     @Get('status')

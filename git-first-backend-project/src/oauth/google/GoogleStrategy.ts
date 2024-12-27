@@ -3,15 +3,16 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Profile, Strategy } from 'passport-google-oauth20';
 import { AuthService } from '../auth.service';
 
+
 @Injectable()
 export class GoogleStrategy extends PassportStrategy(Strategy) {
     constructor(
         @Inject('AUTH_SERVICE') private readonly authService: AuthService,
     ) {
         super({
-            clientID: '752113324316-gat682fiuncepn07i93ai978l7qb4le4.apps.googleusercontent.com',
-            clientSecret: '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',
-            callbackURL: 'http://localhost:3001/api/auth/google/redirect',
+            clientID: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            callbackURL: process.env.CALLBACK_URL,
             scope: ['profile', 'email'],
         });
     }
