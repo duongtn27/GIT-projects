@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
-import { Major } from "../../major/entities/major.entity";
+import { Major } from "../../deparment/entities/department.entity";
 
 @Entity("events")
 export class Event {
