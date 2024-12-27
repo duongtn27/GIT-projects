@@ -29,6 +29,7 @@ import { Event } from './event/entities/event.entity';
 import { Programme } from './programme/entities/programme.entity';
 import { Schedule } from './schedule/entities/schedule.entity';
 import { CourseModule } from './course/course.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -68,6 +69,7 @@ import { CourseModule } from './course/course.module';
     EventModule,
     ProgrammeModule,
     CourseModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
