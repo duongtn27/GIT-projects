@@ -27,5 +27,8 @@ export class Schedule {
     room_id: String;
 
     @Column()
+    rooms: string;
+
+    @Column()
     booker_id: String;
 }

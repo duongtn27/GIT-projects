@@ -17,6 +17,9 @@ export class Campus {
     @Column()
     hotline: string;
 
+    @Column()
+    rooms: string;
+
     @OneToOne(() => Employee)
     @JoinTable()
     director: Employee;
@@ -26,4 +29,5 @@ export class Campus {
 
     @UpdateDateColumn()
     updatedAt: Date
+
 }

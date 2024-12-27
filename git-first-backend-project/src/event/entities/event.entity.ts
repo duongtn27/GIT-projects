@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
-import { Major } from "../../deparment/entities/department.entity";
+import { Department } from "../../deparment/entities/department.entity";
 
 @Entity("events")
 export class Event {
@@ -31,7 +31,7 @@ export class Event {
     description: String;
     
 
-    @ManyToOne(() => Major, major => major.id, { nullable: true })
+    @ManyToOne(() => Department, major => major.id, { nullable: true })
     @JoinColumn({ name: "major_id" })
-    major: Major | null;
+    major: Department | null;
 }

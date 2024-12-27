@@ -1,6 +1,6 @@
 import { Column, Entity, IsNull, Generated, PrimaryColumn, ManyToOne } from "typeorm";
 import { Campus } from '../../campus/entities/campus.entity'
-import { Schedules } from '../../schedule/entities/schedule.entity'
+import { Schedule } from '../../schedule/entities/schedule.entity'
 @Entity("rooms")
 export class Room {
     @PrimaryColumn({ type: 'uuid' })
@@ -22,6 +22,6 @@ export class Room {
     @ManyToOne(() => Campus, campus => campus.rooms) 
     campus: Campus;
 
-    @ManyToOne(() => Schedules, schedule => schedule.rooms) 
-    schedule: Schedules;
+    @ManyToOne(() => Schedule, schedule => schedule.rooms) 
+    schedule: Schedule;
 }
