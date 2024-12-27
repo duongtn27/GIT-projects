@@ -16,7 +16,7 @@ export class AuthService {
         const user = await this.userRepository.findOneBy({ email: details.email });
         console.log(user);
         if (user) return user;
-        console.log('User not found. Creating...');
+        console.log('User not found');
     }
 
     async findUser(id: string) {

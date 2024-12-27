@@ -25,5 +25,4 @@ export class AuthController {
             return { 'msg': 'User is not authenticated' };
         }
     }
-
 }
