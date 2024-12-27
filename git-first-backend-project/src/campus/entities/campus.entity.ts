@@ -1,10 +1,12 @@
 // export class Campus {}
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Employee } from "src/user/entities/employee.entities";
+import { Column, CreateDateColumn, Entity, Generated, JoinTable, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Campus {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryColumn({type: "uuid"})
+    @Generated("uuid")
+    id: string;
 
     @Column()
     name: string;
@@ -15,6 +17,13 @@ export class Campus {
     @Column()
     hotline: string;
 
-    @Column()
-    director: string;
+    @OneToOne(() => Employee)
+    @JoinTable()
+    director: Employee;
+
+    @CreateDateColumn()
+    createdAt: Date
+
+    @UpdateDateColumn()
+    updatedAt: Date
 }

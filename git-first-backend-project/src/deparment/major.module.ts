@@ -6,4 +6,4 @@ import { MajorController } from './major.controller';
   controllers: [MajorController],
   providers: [MajorService],
 })
-export class MajorModule {}
+export class DepartmentModule {}

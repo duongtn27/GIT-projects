@@ -28,7 +28,7 @@ export class Payments {
     @OneToOne(() => User) 
     user: User
 
-    @ManyToOne(() => Submission, submission => submission.payment) 
-    submission: Submission;
+    // @ManyToOne(() => Submission, submission => submission.payment) 
+    // submission: Submission;
 }
     
