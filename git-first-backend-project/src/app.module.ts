@@ -29,6 +29,15 @@ import { Event } from './event/entities/event.entity';
 import { Programme } from './programme/entities/programme.entity';
 import { Schedule } from './schedule/entities/schedule.entity';
 import { CourseModule } from './course/course.module';
+import { AuthModule } from './oauth/auth.module';
+import { PassportModule } from '@nestjs/passport';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { JwtModule } from '@nestjs/jwt';
+import { Admin } from 'typeorm';
+import { Employee } from './user/entities/employee.entities';
+import { Lecture } from './user/entities/lecture.entities';
+import { Security } from './user/entities/security.entities';
+import { Student } from './user/entities/student.entities';
 
 
 @Module({
@@ -47,13 +56,14 @@ import { CourseModule } from './course/course.module';
         username: configService.get<string>('DATABASE_USER'),
         password: configService.get<string>('DATABASE_PASSWORD'),
         database: configService.get<string>('DATABASE_NAME'),
-        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room, Department, Event, Programme, Schedule],
+        entities: [User, Submission, Service, History, Notification, Marks, Campus, Payments, Room, Department, Event, Programme, Schedule, Employee, Admin, Lecture, Security, Student],
         synchronize: true,
         ssl: {
           rejectUnauthorized: false,
         },
       }),
     }),
+    PassportModule.register({ session: true}),
     MarkModule,
     CampusModule,
     PaymentModule,
@@ -68,6 +78,8 @@ import { CourseModule } from './course/course.module';
     EventModule,
     ProgrammeModule,
     CourseModule,
+    AuthModule,
+    AuthenticationModule,
   ],
   controllers: [],
   providers: [],

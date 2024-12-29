@@ -30,4 +30,5 @@ export class Submission {
 
     @ManyToOne(() => Service, service => service.id)
     service: Service; // foreign key là id của service
+    payment: any;
 }
