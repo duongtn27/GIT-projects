@@ -5,7 +5,7 @@ import { Submission } from '../../submission/entities/submission.entity'
 export class Payments {
     @PrimaryColumn({ type: 'uuid' })
     @Generated('uuid')
-    id: String;
+    id: string;
 
     @Column()
     user_id: number;//Foreign key

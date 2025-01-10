@@ -1,19 +1,27 @@
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import {
+  Column,
+  Entity,
+  Generated,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  Timestamp,
+} from 'typeorm';
 
 @Entity()
 export class Marks {
-    @PrimaryGeneratedColumn()
-    id: string;
+  @PrimaryColumn({ type: 'uuid' })
+  @Generated('uuid')
+  id: string;
 
-    @Column()
-    student_id: string;
+  @Column()
+  student_id: string;
 
-    @Column()
-    teacher_id: string;
+  @Column()
+  teacher_id: string;
 
-    @Column()
-    score: number;
+  @Column()
+  score: number;
 
-    @Column()
-    exam_date: Date;
+  @Column()
+  exam_date: Date;
 }

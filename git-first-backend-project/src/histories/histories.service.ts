@@ -22,7 +22,7 @@ export class HistoriesService {
 
     async findOne(historyID: string): Promise<History | null> {
         // return null;
-        return this.historyRepository.findOneBy({historyId : historyID} );
+        return this.historyRepository.findOneBy({id : historyID} );
     }
 
     async remove(historyID: string) {

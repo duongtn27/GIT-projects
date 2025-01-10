@@ -11,14 +11,14 @@ import {
 @Entity()
 export class History {
     @PrimaryGeneratedColumn('uuid')
-    historyId: string;
+    id: string
 
     // ID of the changed entity 
     @Column()
     entityId: string;
 
     // 
-    @Column({ type: 'varchar', length: 50 })
+    @Column()
     versionNumber: string;
 
     //
@@ -30,7 +30,7 @@ export class History {
     changedByUserId: string;
 
     // content of the old version
-    @Column({ type: 'text' })
+    @Column()
     versionData: string;
 
     // optional description of this version

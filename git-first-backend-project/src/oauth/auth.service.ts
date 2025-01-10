@@ -22,7 +22,7 @@ export class AuthService {
         console.log('User not found');
     }
 
-    async findUser(id: string) {
+    async findUser(id: string): Promise<User> {
         const user = await this.userRepository.findOneBy({ id });
         return user;
     }

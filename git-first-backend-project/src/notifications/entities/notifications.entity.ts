@@ -1,24 +1,27 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  Generated,
+  PrimaryColumn,
 } from 'typeorm';
 
 @Entity()
 export class Notification {
-    @PrimaryGeneratedColumn()
-    notificationId: string;
+  @PrimaryColumn({ type: 'uuid' })
+  @Generated('uuid')
+  id: String;
 
-    @Column()
-    serviceId: string
+  @Column()
+  serviceId: string;
 
-    @Column()
-    message: string;
+  @Column()
+  message: string;
 
-    @CreateDateColumn()
-    createdDate: Date;
+  @CreateDateColumn()
+  createdDate: Date;
 
-    @Column({ default: false })
-    isRead: boolean;
+  @Column({ default: false })
+  isRead: boolean;
 }

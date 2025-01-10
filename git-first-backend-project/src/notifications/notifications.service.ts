@@ -21,7 +21,7 @@ export class NotificationsService {
     }
 
     async findOne(id: string): Promise<Notification> {
-        return this.notificationRepository.findOneBy({ notificationId: id });
+        return this.notificationRepository.findOneBy({ id: id });
     }
 
     async remove(id: string) {

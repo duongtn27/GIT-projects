@@ -5,13 +5,13 @@ import { Column, CreateDateColumn, Entity, Generated, OneToMany, PrimaryColumn, 
 export class Programme {
     @PrimaryColumn({type: "uuid"})
     @Generated("uuid")
-    id: String;
+    id: string;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column()
-    description: String;
+    description: string;
 
     @OneToMany(() => Department, (department) => department.programme)
     departments: Department[]

@@ -6,7 +6,7 @@ import { Schedule } from '../../schedule/entities/schedule.entity';
 export class Room {
     @PrimaryColumn({ type: 'uuid' })
     @Generated('uuid')
-    id: String;
+    id: string;
 
     @Column()
     description: string;

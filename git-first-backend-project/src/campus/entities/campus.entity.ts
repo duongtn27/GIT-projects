@@ -1,5 +1,5 @@
 // export class Campus {}
-import { Employee } from "src/user/entities/employee.entities";
+import { Employee } from "src/user/entities/employee.entity";
 import { Column, CreateDateColumn, Entity, Generated, JoinTable, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()

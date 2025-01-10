@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryColumn, OneToMany, Generated } from "typeorm";
 // import { Submission } from '../../submission/entities/submission.entity';
 
 @Entity("service")
 export class Service {
-    @PrimaryColumn()
+    @PrimaryColumn({type: "uuid"})
+    @Generated("uuid")
     id: string;
 
     @Column()

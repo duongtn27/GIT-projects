@@ -1,16 +1,17 @@
-import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn, Generated } from "typeorm";
 import { Department } from "../../deparment/entities/department.entity";
 
 @Entity("events")
 export class Event {
-    @PrimaryColumn()
-    id: String;
+    @PrimaryColumn({type: "uuid"})
+    @Generated("uuid")
+    id: string;
 
     @Column()
-    name: String;
+    name: string;
 
     @Column("text", { array: true })
-    speaker: String[];
+    speaker: string[];
     
     @Column("text", { array: true })
     participants: string[];
@@ -25,10 +26,10 @@ export class Event {
     updated_at: Date;
 
     @Column("text")
-    location: String;
+    location: string;
 
     @Column("text")
-    description: String;
+    description: string;
     
 
     @ManyToOne(() => Department, Department => Department.id, { nullable: true })

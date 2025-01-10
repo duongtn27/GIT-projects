@@ -1,12 +1,13 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, Generated, PrimaryColumn } from "typeorm";
 
 @Entity("schedules")
 export class Schedule {
-    @PrimaryColumn()
-    id: String;
+    @PrimaryColumn({type: "uuid"})
+    @Generated("uuid")
+    id: string;
 
     @Column()
-    courses_id: String;
+    courses_id: string;
 
     @Column({type: "timestamp"})
     date: Date;
@@ -15,18 +16,18 @@ export class Schedule {
     slot: Number;
 
     @Column()
-    group_id: String;
+    group_id: string;
 
     @Column()
-    lecture_id: String;
+    lecture_id: string;
 
     @Column()
     session_number: Number;
 
     @Column()
-    room_id: String;
+    room_id: string;
 
     @Column()
-    booker_id: String;
+    booker_id: string;
     rooms: any;
 }
