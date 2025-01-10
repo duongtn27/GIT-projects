@@ -16,7 +16,7 @@ export class User {
     @Column()
     dob: String
 
-    @Column()
+    @Column({nullable: true})
     role: Role
 
     @Column()
@@ -28,7 +28,7 @@ export class User {
     @Column()
     phone: String
 
-    @Column()
+    @Column({default: 0})
     balance: Number
 
     @Column()

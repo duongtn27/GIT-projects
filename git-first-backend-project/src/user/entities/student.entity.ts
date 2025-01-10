@@ -7,11 +7,11 @@ export class Student {
     @Generated("uuid")
     id: string
 
-    @OneToOne(() => User)
+    @OneToOne(() => User, {onDelete: "CASCADE"})
     @JoinTable()
     account: User
 
-    @Column()
+    @Column({nullable: true})
     gpa: Number
 
     @CreateDateColumn()
