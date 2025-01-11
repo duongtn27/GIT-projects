@@ -1,4 +1,4 @@
-import { CreateDateColumn, Entity, Generated, JoinTable, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import { CreateDateColumn, Entity, Generated, JoinColumn, JoinTable, OneToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity("admins")
@@ -7,8 +7,8 @@ export class Admin {
     @Generated("uuid")
     id: string
 
-    @OneToOne(() => User)
-    @JoinTable()
+    @OneToOne(() => User, (acc) => acc.admin, {onDelete: "CASCADE"})
+    @JoinColumn()
     account: User
 
     @CreateDateColumn()

@@ -1,4 +1,4 @@
-import { PrimaryColumn, Generated, OneToOne, JoinTable, CreateDateColumn, UpdateDateColumn, Entity, Column } from "typeorm"
+import { PrimaryColumn, Generated, OneToOne, JoinTable, CreateDateColumn, UpdateDateColumn, Entity, Column, JoinColumn } from "typeorm"
 import { User } from "./user.entity"
 
 @Entity("students")
@@ -7,8 +7,8 @@ export class Student {
     @Generated("uuid")
     id: string
 
-    @OneToOne(() => User, {onDelete: "CASCADE"})
-    @JoinTable()
+    @OneToOne(() => User, (acc) => acc.student, {onDelete: "CASCADE"})
+    @JoinColumn()
     account: User
 
     @Column({nullable: true})
