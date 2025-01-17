@@ -29,18 +29,16 @@ import { Event } from './event/entities/event.entity';
 import { Programme } from './programme/entities/programme.entity';
 import { Schedule } from './schedule/entities/schedule.entity';
 import { CourseModule } from './course/course.module';
-import { AuthModule } from './oauth/auth.module';
 import { PassportModule } from '@nestjs/passport';
-import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtModule } from '@nestjs/jwt';
 import { Admin } from 'typeorm';
 import { Employee } from './user/entities/employee.entities';
 import { Lecture } from './user/entities/lecture.entities';
 import { Security } from './user/entities/security.entities';
 import { Student } from './user/entities/student.entities';
-import { AuthorizationModule } from './authorization/authorization.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -82,9 +80,7 @@ import { AppService } from './app.service';
     EventModule,
     ProgrammeModule,
     CourseModule,
-    AuthModule,
-    AuthenticationModule,
-    AuthorizationModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
