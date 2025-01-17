@@ -18,7 +18,7 @@ export class User {
     @Column()
     role: Role
 
-    @Column()
+    @Column({ unique: true })
     email: String
 
     @Column()
